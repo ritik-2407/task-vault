@@ -2,6 +2,7 @@ import express from "express"
 import mongoose from "mongoose";
 import taskRoutes from "./routes/task.routes.js"
 import { errorMiddleware} from "./middleware/error.middleware.js"
+import dotenv from "dotenv";
 const app = express();
 
 app.use(express.json());
@@ -10,9 +11,9 @@ app.use("/tasks" , taskRoutes);
 
 app.use(errorMiddleware);
 
-const MONGO_URI = "mongodb+srv://idfcnub_db_user:ritik2407@task-vault.i5as5nr.mongodb.net/";
+const MONGO_URI = process.env.MONGO_URI;
 
-mongoose.connect(MONGO_URI).then( () => {
+mongoose.connect(MONGO_URI as string).then( () => {
     console.log("Mongo DB connected");
 
     app.listen(3000 , () => {
