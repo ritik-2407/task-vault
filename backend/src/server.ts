@@ -10,7 +10,7 @@ app.use("/tasks" , taskRoutes);
 
 app.use(errorMiddleware);
 
-const MONGO_URI = "mongodb://127.0.0.1:27017/task-vault";
+const MONGO_URI = "mongodb+srv://idfcnub_db_user:ritik2407@task-vault.i5as5nr.mongodb.net/";
 
 mongoose.connect(MONGO_URI).then( () => {
     console.log("Mongo DB connected");
